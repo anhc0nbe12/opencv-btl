@@ -2,10 +2,10 @@ import numpy as np
 import cv2 as cv
 
 def hcn (contours):
-    result =[] 
+    result =[]  
     for i in contours:
         area = cv.contourArea(i)
-        if area>50:
+        if area>2000:
             # tính chu vi và sử dụng contours approximation algorithm để đơn giản hóa contours
             D = cv.arcLength(i,True)
             approx = cv.approxPolyDP(i,D*0.01,True)
@@ -31,18 +31,20 @@ def order(points):
 
 
 def checkans(imgThresh, total_questions:int):
-    imgThresh = cv.resize(imgThresh,(total_questions*100,total_questions*100))
+    rs = imgThresh.shape[1]//total_questions
+    imgThresh = cv.resize(imgThresh,(int(total_questions*rs),int(total_questions*rs)))
     # print(len(imgthresh))
     hor = np.vsplit(imgThresh,total_questions)
     store = []
     for i in hor:
         ver = np.hsplit(i,4)
+        
         each_question = []
         for j in ver:
             each_question.append(cv.countNonZero(j))
         store.append(each_question)
     store_ndarray = np.array(store)
-    # print(store_ndarray)
+    print(store_ndarray)
     
     result = map(lambda x: np.where(x==np.max(x)),store_ndarray) # map object
     result = [i[0][0] for i in result] # list object
