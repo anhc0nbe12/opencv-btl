@@ -95,9 +95,10 @@ index[1,1].imshow(imgThresh),index[1,1].set_title('Thresh ')
 index[1,2].imshow(imgFinal),index[1,2].set_title('Ket qua ')
 
 # plt.subplot(2,3,3), plt.imshow(imgFinal),plt.title('Ket qua ')
-plt.axes = None
+
 
 plt.show()
 
 
 cv.waitKey(0)
+cv.destroyAllWindows()

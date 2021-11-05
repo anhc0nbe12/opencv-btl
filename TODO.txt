@@ -1,0 +1,11 @@
+input: ảnh có chứa các đáp án
+output: các đáp án chính xác, và không chính xác
+
+
+    1. resize, cân bằng độ sáng ảnh,  tìm đường biên
+    2. tìm các contours của ảnh, tìm ô khoanh đáp án
+    3. tìm 4 góc của ô khoanh đáp án, cắt ô khoanh đó ra ảnh mới để xử lý
+    4. chuyển sang ảnh nhị phân, tìm các đáp án được khoanh
+    5. đưa ảnh đã xử lý ghép vs ảnh ban đầu
+
+    6. tính toán đáp án, đưa ra ảnh
