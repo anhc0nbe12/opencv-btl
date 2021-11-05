@@ -49,6 +49,8 @@ def checkans(imgThresh, total_questions:int):
     result = map(lambda x: np.where(x==np.max(x)),store_ndarray) # map object
     result = [i[0][0] for i in result] # list object
     # print(result)
+    # for i in result:
+    #     print(i)
 
     return result
 

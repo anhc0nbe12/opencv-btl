@@ -50,12 +50,22 @@ imgThresh = cv.medianBlur(imgThresh,5)
 
 
 # tính toán kết quả 
+funcs.checkans(imgThresh,total_questions)
 result = funcs.checkans(imgThresh,total_questions)
 score = 0
-for i in range(total_questions):
-    if result[i] == answer[i]:
-        score+=1
-# print(score)
+dict = {
+    0:'A',1:'B',2:'C',3:'D'
+}
+for idx, i in enumerate(result):
+    out = f"Câu {idx} khoanh: "+ dict[i]
+    score +=1
+    if answer[idx] != i:
+        out += ', đáp án chính xác: '+ dict[answer[idx]]
+        score -=1
+    print(out)
+print("Điểm số: ",score,'/',len(answer))
+
+
 
 
 
@@ -94,7 +104,6 @@ index[1,0].imshow(imgCopy_1),index[1,0].set_title('tim contours ')
 index[1,1].imshow(imgThresh),index[1,1].set_title('Thresh ')
 index[1,2].imshow(imgFinal),index[1,2].set_title('Ket qua ')
 
-# plt.subplot(2,3,3), plt.imshow(imgFinal),plt.title('Ket qua ')
 
 
 plt.show()
